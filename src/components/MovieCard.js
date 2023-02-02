@@ -3,14 +3,14 @@ import GetMovieDetails from "../services/GetMovieDetails";
 import MovieDetails from "./MovieDetails";
 import "./MovieCard_design.css";
 
-const MovieCard = ({ name }) => {
+const MovieCard = ({ name, selected, selectedset }) => {
   const [idm, setIdm] = useState("tt0499549");
 
   const viewMovie = (id) => {
     setIdm(id);
-    setMovieSelected(true);
+    selectedset(true);
   };
-  const [movieSelected, setMovieSelected] = useState(false);
+  // const [movieSelected, setMovieSelected] = useState(false);
 
   const { movieid } = GetMovieDetails(
     `https://www.omdbapi.com/?i=${idm}&apikey=4335f9ff`
@@ -18,7 +18,7 @@ const MovieCard = ({ name }) => {
 
   return (
     <div>
-      {movieSelected === false && (
+      {selected === false && (
         <div className="moviecard">
           {name &&
             name.map((x) => (
@@ -32,7 +32,7 @@ const MovieCard = ({ name }) => {
             ))}
         </div>
       )}
-      {movieSelected === true && <MovieDetails movie={movieid} />}
+      {selected === true && <MovieDetails movie={movieid} />}
     </div>
   );
 };

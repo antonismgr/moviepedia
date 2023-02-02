@@ -5,15 +5,19 @@ import Button from "./Button";
 import "./Main_design.css";
 
 const Main = () => {
-  const [resultsFound, setResultsFound] = useState(false);
-  const [moviename, setMoviename] = useState("");
-  const search = () => setResultsFound(true);
+  const [moviename, setMovieName] = useState("");
+  const [tempMovie, setTempMovie] = useState("");
+  const [movieSelected, setMovieSelected] = useState(false);
+  const search = () => {
+    setMovieName(tempMovie);
+    setMovieSelected(false);
+  };
   const { movie } = useFetch(
     `http://www.omdbapi.com/?s=${moviename}&apikey=4335f9ff`
   );
 
   const handleChange = (event) => {
-    setMoviename(event.target.value);
+    setTempMovie(event.target.value);
   };
 
   return (
@@ -25,7 +29,11 @@ const Main = () => {
         </div>
       </div>
 
-      {resultsFound === true && <MovieCard name={movie} />}
+      <MovieCard
+        name={movie}
+        selectedset={setMovieSelected}
+        selected={movieSelected}
+      />
     </div>
   );
 };

@@ -1,7 +1,8 @@
 import "./MovieDetails_design.css";
+import imdblogo from "../logo/imdb.png";
+import ytlogo from "../logo/yt.png";
 
 const MovieDetails = ({ movie }) => {
-  console.log(movie);
   return (
     <div className="moviedetails">
       <div className="details_1">
@@ -26,14 +27,14 @@ const MovieDetails = ({ movie }) => {
             href={"https://www.imdb.com/title/" + movie.imdbID + "/"}
             target="_blank"
           >
-            IMDB
+            <img src={imdblogo} alt="" width="70px" />
           </a>
           <a
             className="yt"
             href={"https://www.youtube.com/results?search_query=" + movie.Title}
             target="_blank"
           >
-            Youtube
+            <img src={ytlogo} alt="" width="50px" />
           </a>
         </div>
       </div>
@@ -42,28 +43,3 @@ const MovieDetails = ({ movie }) => {
 };
 
 export default MovieDetails;
-
-{
-  /* 
-              <div class="details_2">
-              <div class="moviehead">
-              <h1>${moviedetails.Title}</h1>
-              <span class="rating">${moviedetails.imdbRating} &#11088</span>
-              </div>
-              <h2>${moviedetails.Year}</h2>
-               <h3>Director: ${moviedetails.Director}</h3>
-               <h3>Writer : ${moviedetails.Writer}</h3>
-               <h3>Actors : ${moviedetails.Actors}</h3>
-               <h3>Awards : ${moviedetails.Awards}</h3>
-               <h3>BoxOffice : ${moviedetails.BoxOffice}</h3>
-               <h3>Rated : ${moviedetails.Rated}</h3>
-               <h3>Runtime : ${moviedetails.Runtime}</h3>
-               
-               <p>${moviedetails.Plot}</p>
-               <div class="imdbdata">
-               <a href="https://www.imdb.com/title/${moviedetails.imdbID}/" target="_blank"><img src="imdb.png" width="70px"></a>
-               <a class="yt" href="https://www.youtube.com/results?search_query=${moviedetails.Title}" target="_blank"><img src="yt.png" width="50px"></a>
-               <button class="add" onclick="addtoCollection({title:'${moviedetails.Title}',poster:'${moviedetails.Poster}',id:'${moviedetails.imdbID}',year:'${moviedetails.Year}'})"></button>
-               </div>
-              </div>                */
-}

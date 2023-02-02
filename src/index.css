@@ -24,3 +24,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+a:hover {
+  transform: scale(1.2);
+}
+
+a {
+  transition: 1.5s;
+}
