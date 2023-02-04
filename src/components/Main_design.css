@@ -11,8 +11,8 @@
   padding: 20px;
   background-color: rgb(255, 255, 255);
   border-radius: 15px;
-  max-width: 330px;
-  width: 330px;
+  max-width: 380px;
+  width: 380px;
 }
 
 .searchbar {
@@ -35,4 +35,25 @@ button {
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 17px;
+}
+
+.history {
+  margin-top: 50px;
+}
+
+.showhistory:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.showhistory {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  margin: 20px;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: gray;
+  align-items: center;
 }
