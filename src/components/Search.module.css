@@ -1,0 +1,25 @@
+.search {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  z-index: 99;
+  top: 0%;
+  width: 100%;
+  padding: 20px;
+  background-color: #f1f1f1;
+  box-shadow: 0px 0px 10px 0px white;
+}
+
+.searchbar {
+  display: flex;
+  align-items: center;
+}
+
+.searchbar.input[type="text"] {
+  float: right;
+  padding: 6px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 1px;
+  font-size: 17px;
+}
