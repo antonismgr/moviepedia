@@ -9,7 +9,6 @@ import GetMovieDetails from "../src/services/GetMovieDetails";
 
 import Search from "../src/components/Search";
 import { GetMovieDetails1 } from "../src/services/GetMovieDetails1";
-// import ListMovieDetails from "../src/components/ListMovieDetails";
 
 function App() {
   const [moviename, setMovieName] = useState("");
@@ -21,7 +20,6 @@ function App() {
   const [showMovieSearch, setShowMovieSearch] = useState(true);
   const [showMyList, setShowMyList] = useState(false);
   const [showMovieDetails, setShowMovieDetails] = useState(false);
-  // const [showListMovieDetails, setShowListMovieDetails] = useState(false);
 
   const search = () => {
     setMovieName(tempMovie);
@@ -29,7 +27,6 @@ function App() {
     setShowMovieSearch(true);
     setShowHistory(false);
     setShowMyList(false);
-    // setShowListMovieDetails(false);
   };
 
   // const service = () => {
@@ -45,7 +42,6 @@ function App() {
     setShowHistory(true);
     setShowMovieSearch(false);
     setShowMyList(false);
-    // setShowListMovieDetails(false);
   };
 
   const showmylist = () => {
@@ -54,7 +50,6 @@ function App() {
     setShowHistory(false);
     setShowMovieSearch(false);
     setShowMyList(true);
-    // setShowListMovieDetails(false);
   };
 
   const viewMovie = (id, title, poster, year) => {
@@ -72,7 +67,6 @@ function App() {
     setShowMyList(false);
     setShowMovieSearch(false);
     setShowHistory(false);
-    // setShowListMovieDetails(true);
   };
 
   const addToMyList = (title, poster, id, year) =>
@@ -80,10 +74,6 @@ function App() {
 
   const { movie } = useFetch(
     `http://www.omdbapi.com/?s=${moviename}&apikey=4335f9ff`
-  );
-
-  const { movieid } = GetMovieDetails(
-    `https://www.omdbapi.com/?i=${idMovie}&apikey=4335f9ff`
   );
 
   const handleChange = (event) => {
@@ -129,7 +119,6 @@ function App() {
       {showMyList && (
         <MyList myList={myList} showmoviefromlist={showmoviefromlist} />
       )}
-      {/* {showListMovieDetails && <ListMovieDetails movie={movieid} />} */}
     </div>
   );
 }

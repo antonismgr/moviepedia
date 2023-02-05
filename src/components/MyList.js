@@ -1,4 +1,5 @@
 import styles from "./MyList.module.css";
+import "animate.css";
 
 const MyList = ({ myList }) => {
   return (
@@ -11,6 +12,8 @@ const MyList = ({ myList }) => {
             " trailer"
           }
           target="_blank"
+          key={x.id}
+          className="animate__animated animate__fadeIn"
         >
           <div className={styles.showmylist}>
             <span className={styles.name}>{x.name}</span>

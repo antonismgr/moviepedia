@@ -1,6 +1,7 @@
 import GetMovieDetails from "../services/GetMovieDetails";
 import MovieDetails from "./MovieDetails";
 import styles from "./MovieSearch.module.css";
+import "animate.css";
 
 const MovieSearch = ({
   name,
@@ -20,11 +21,12 @@ const MovieSearch = ({
         <div className={styles.moviesearch}>
           {name &&
             name.map((x) => (
-              <div className={styles.movies}>
+              <div className={styles.movies} key={x.imdbID}>
                 <img
                   src={x.Poster}
                   alt=""
                   onClick={() => viewMovie(x.imdbID, x.Title, x.Poster, x.Year)}
+                  className="animate__animated animate__zoomIn"
                 />
               </div>
             ))}

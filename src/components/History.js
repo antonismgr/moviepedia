@@ -1,11 +1,12 @@
 import styles from "./History.module.css";
 import * as React from "react";
+import "animate.css";
 
 const History = ({ history }) => {
   return (
     <div className={styles.history}>
       {history.map((x) => (
-        <div>
+        <div key={x.id} className="animate__animated animate__fadeInDownBig">
           <div className={styles.historyline}>
             <img src={x.poster} alt="" width="100px" />
             <div className={styles.historydeteils}>
@@ -17,15 +18,6 @@ const History = ({ history }) => {
         </div>
       ))}
     </div>
-
-    // <div className={styles.history}>
-    //   {history.map((x) => (
-    //     <div className={styles.showhistory}>
-    //       <img src={x.poster} alt="" width="100px" />
-    //       {x.name}
-    //     </div>
-    //   ))}
-    // </div>
   );
 };
 
