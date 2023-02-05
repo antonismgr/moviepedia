@@ -1,3 +1,4 @@
+import React from "react";
 import spinner from "../icons/spiner.gif";
 
 const Loading = () => {

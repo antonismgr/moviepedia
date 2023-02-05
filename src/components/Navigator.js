@@ -1,3 +1,4 @@
+import React from "react";
 import Button from "./Button";
 import styles from "./Navigator.module.css";
 import Stack from "@mui/material/Stack";

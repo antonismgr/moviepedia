@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import MovieSearch from "../src/components/MovieSearch";
 import styles from "./App.module.css";
 import History from "../src/components/History";
@@ -76,7 +76,7 @@ function App() {
       .then((data) => {
         if (data.Response === "True") {
           setMovie(data.Search);
-          console.log(data);
+
           setNotFound(false);
         } else {
           console.log(data.Error);
@@ -92,7 +92,7 @@ function App() {
       .then((data) => data.json())
       .then((data) => {
         setIdMovie(data);
-        console.log(data);
+
         setShowLoading(false);
       });
   };

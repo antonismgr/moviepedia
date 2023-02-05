@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import MovieDetails from "./MovieDetails";
 import styles from "./MovieSearch.module.css";
 import "animate.css";

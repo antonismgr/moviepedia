@@ -37,8 +37,10 @@ ul {
   margin-top: 400px;
 }
 
-.loadingdetails {
-  display: flex;
-  justify-content: center;
-  margin-top: 400px;
+@media only screen and (max-width: 600px) {
+  .loading {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+  }
 }

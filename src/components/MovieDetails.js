@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./MovieDetails.module.css";
 import imdblogo from "../logo/imdb.png";
 import ytlogo from "../logo/yt.png";
