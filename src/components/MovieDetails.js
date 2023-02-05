@@ -4,6 +4,7 @@ import ytlogo from "../logo/yt.png";
 import Button from "./Button";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import "animate.css";
+import star from "../logo/star.png";
 
 const MovieDetails = ({ movie, addToMyList, myList }) => {
   return (
@@ -19,7 +20,7 @@ const MovieDetails = ({ movie, addToMyList, myList }) => {
           <h2>{movie.Year}</h2>
           <div className={styles.rating}>
             <span className={styles.label}>Rating : {movie.imdbRating}</span>
-           
+           <img src={star} width="30px" />
           </div>
           <h3>
             <span className={styles.label}>Director</span> : {movie.Director}
