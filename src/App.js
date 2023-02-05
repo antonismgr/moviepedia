@@ -1,47 +1,47 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import MovieSearch from "../src/components/MovieSearch";
-import useFetch from "../src/services/useFetch";
 import styles from "./App.module.css";
 import History from "../src/components/History";
 import MyList from "../src/components/MyList";
-import GetMovieDetails from "../src/services/GetMovieDetails";
-
 import Search from "../src/components/Search";
-import { GetMovieDetails1 } from "../src/services/GetMovieDetails1";
+import "animate.css";
+import Loading from "./components/Loading";
 
 function App() {
-  const [moviename, setMovieName] = useState("");
   const [tempMovie, setTempMovie] = useState("");
-  const [idMovie, setidMovie] = useState("tt0499549");
+  const [idMovie, setIdMovie] = useState("tt0499549");
   const [history, setHistory] = useState([]);
   const [myList, setMyList] = useState([]);
   const [showHistory, setShowHistory] = useState(false);
-  const [showMovieSearch, setShowMovieSearch] = useState(true);
+  const [showMovieSearch, setShowMovieSearch] = useState(false);
   const [showMyList, setShowMyList] = useState(false);
   const [showMovieDetails, setShowMovieDetails] = useState(false);
+  const [notFound, setNotFound] = useState(false);
+  const [movie, setMovie] = useState(null);
+  const [showLoading, setShowLoading] = useState(false);
 
   const search = () => {
-    setMovieName(tempMovie);
+    service(tempMovie);
     setShowMovieDetails(false);
-    setShowMovieSearch(true);
     setShowHistory(false);
     setShowMyList(false);
+    setShowMovieSearch(true);
   };
 
-  // const service = () => {
-  //   setIsLoading(true);
-  //
-  //   GetMovieDetails1(
-  //     `https://www.omdbapi.com/?i=tt0499549&apikey=4335f9ff`
-  //   ).then((data) => {
-  //     setIsLoading(false);
-  //   });
-  // };
   const showhistory = () => {
-    setShowHistory(true);
     setShowMovieSearch(false);
     setShowMyList(false);
+    setNotFound(false);
+    setShowHistory(true);
+  };
+
+  const shownotfound = () => {
+    setShowHistory(false);
+    setShowMovieSearch(false);
+    setShowMyList(false);
+    setNotFound(true);
+    setShowHistory(false);
   };
 
   const showmylist = () => {
@@ -49,32 +49,53 @@ function App() {
     setMyList(sortedList);
     setShowHistory(false);
     setShowMovieSearch(false);
+
+    setNotFound(false);
     setShowMyList(true);
   };
 
   const viewMovie = (id, title, poster, year) => {
-    setidMovie(id);
+    service2(id);
     setShowMovieDetails(true);
-    setHistory([
-      ...history,
-      { name: title, poster: poster, id: id, year: year },
-    ]);
-    setShowHistory(false);
-  };
-
-  const showmoviefromlist = (id) => {
-    setidMovie(id);
-    setShowMyList(false);
-    setShowMovieSearch(false);
+    if (history.filter((m) => m.id === id).length === 0) {
+      setHistory([
+        ...history,
+        { name: title, poster: poster, id: id, year: year },
+      ]);
+    }
     setShowHistory(false);
   };
 
   const addToMyList = (title, poster, id, year) =>
     setMyList([...myList, { name: title, poster: poster, id: id, year: year }]);
 
-  const { movie } = useFetch(
-    `http://www.omdbapi.com/?s=${moviename}&apikey=4335f9ff`
-  );
+  const service = (movie) => {
+    setShowLoading(true);
+    fetch(`http://www.omdbapi.com/?s=${movie}&apikey=4335f9ff`)
+      .then((data) => data.json())
+      .then((data) => {
+        if (data.Response === "True") {
+          setMovie(data.Search);
+          console.log(data);
+          setNotFound(false);
+        } else {
+          console.log(data.Error);
+          shownotfound();
+        }
+        setShowLoading(false);
+      });
+  };
+
+  const service2 = (movie) => {
+    setShowLoading(true);
+    fetch(`https://www.omdbapi.com/?i=${movie}&apikey=4335f9ff`)
+      .then((data) => data.json())
+      .then((data) => {
+        setIdMovie(data);
+        console.log(data);
+        setShowLoading(false);
+      });
+  };
 
   const handleChange = (event) => {
     setTempMovie(event.target.value);
@@ -94,6 +115,14 @@ function App() {
     return data;
   };
 
+  const home = () => {
+    setShowHistory(false);
+    setShowMovieSearch(false);
+    setShowMyList(false);
+    setNotFound(false);
+    setShowHistory(false);
+  };
+
   return (
     <div className={styles.main}>
       <Search
@@ -101,9 +130,18 @@ function App() {
         search={search}
         showhistory={showhistory}
         showmylist={showmylist}
+        home={home}
       />
 
-      {showMovieSearch && (
+      {notFound && (
+        <div className={styles.notfound}>
+          <h1 className="animate__animated animate__bounceIn">
+            Movie not found
+          </h1>
+        </div>
+      )}
+
+      {showMovieSearch && !showLoading && (
         <MovieSearch
           name={movie}
           showMovieDetails={showMovieDetails}
@@ -112,13 +150,14 @@ function App() {
           idMovie={idMovie}
           addToMyList={addToMyList}
           myList={myList}
+          movieid={movie}
         />
       )}
 
-      {showHistory && <History history={history} />}
-      {showMyList && (
-        <MyList myList={myList} showmoviefromlist={showmoviefromlist} />
-      )}
+      {showHistory && history.length > 0 && <History history={history} />}
+      {showMyList && <MyList myList={myList} />}
+
+      {showLoading && <Loading />}
     </div>
   );
 }

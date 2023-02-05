@@ -30,3 +30,15 @@ a {
 ul {
   list-style: none;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  margin-top: 400px;
+}
+
+.loadingdetails {
+  display: flex;
+  justify-content: center;
+  margin-top: 400px;
+}

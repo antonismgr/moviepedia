@@ -5,11 +5,9 @@
 
 .history {
   position: inherit;
-  margin-top: 150px;
   background-color: white;
   padding: 15px;
-  margin: 50px;
-  margin-top: 170px;
+  margin: 160px 50px 50px 50px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px 4px #ffe100;
 }
@@ -42,4 +40,35 @@ img {
   display: flex;
   flex-direction: column;
   margin-left: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+  .historydeteils {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+  }
+
+  .title {
+    font-family: "Roboto";
+    font-size: 110%;
+    color: rgb(31, 31, 31);
+    padding: 10px;
+  }
+
+  .year {
+    font-family: "Roboto";
+    font-size: 90%;
+    color: rgb(31, 31, 31);
+    padding: 10px;
+  }
+
+  .history {
+    position: inherit;
+    background-color: white;
+    padding: 15px;
+    margin: 125px 30px 30px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 4px #ffe100;
+  }
 }

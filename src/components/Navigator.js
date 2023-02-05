@@ -17,6 +17,7 @@ const Navigator = ({ showhistory, showmylist }) => {
           size="large"
         />
         <Button
+          className={styles.buttons}
           title="Favourites"
           startIcon={<FavoriteIcon />}
           action={showmylist}

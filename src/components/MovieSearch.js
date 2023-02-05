@@ -1,4 +1,4 @@
-import GetMovieDetails from "../services/GetMovieDetails";
+import React, { useState } from "react";
 import MovieDetails from "./MovieDetails";
 import styles from "./MovieSearch.module.css";
 import "animate.css";
@@ -11,10 +11,6 @@ const MovieSearch = ({
   addToMyList,
   myList,
 }) => {
-  const { movieid } = GetMovieDetails(
-    `https://www.omdbapi.com/?i=${idMovie}&apikey=4335f9ff`
-  );
-
   return (
     <div className={styles.container}>
       {showMovieDetails === false && (
@@ -32,9 +28,9 @@ const MovieSearch = ({
             ))}
         </div>
       )}
-      {showMovieDetails === true && (
+      {showMovieDetails && (
         <MovieDetails
-          movie={movieid}
+          movie={idMovie}
           addToMyList={addToMyList}
           myList={myList}
         />

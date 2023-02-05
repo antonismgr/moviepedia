@@ -3,3 +3,14 @@
   justify-content: center;
   margin-left: 50px;
 }
+
+@media only screen and (max-width: 600px) {
+  .navigator {
+    display: flex;
+    justify-content: center;
+    margin-left: 0px;
+  }
+  .buttons {
+    display: flex;
+  }
+}

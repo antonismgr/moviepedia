@@ -36,7 +36,7 @@
 }
 
 .details_2 h2 {
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 
 .details_2 h3 {
@@ -63,8 +63,11 @@
   font-size: x-large;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 75px;
+  padding-bottom: 20px;
+}
+
+.rating img {
+  margin-left: 5px;
 }
 
 .moviehead {
@@ -79,4 +82,28 @@
 .addbutton {
   margin-top: 50px;
   margin-left: 280px;
+}
+
+@media only screen and (max-width: 600px) {
+  .moviedetails {
+    display: flex;
+    flex-direction: column;
+    margin-top: 130px;
+    width: 320px;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .details_1 img {
+    width: 250px;
+  }
+  .details_2 {
+    width: 250px;
+
+    margin: -18px;
+  }
+
+  .addbutton {
+    margin-top: 0px;
+    margin-left: 65px;
+  }
 }

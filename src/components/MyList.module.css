@@ -44,3 +44,44 @@
 img {
   border-radius: 8px;
 }
+
+@media only screen and (max-width: 600px) {
+  .mylist {
+    position: inherit;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .showmylist {
+    display: flex;
+
+    flex-direction: column;
+    color: white;
+    margin: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    height: 350px;
+    align-items: center;
+  }
+
+  .showmylist img {
+    width: 170px;
+  }
+
+  .showmylist:hover {
+    background-color: rgb(31, 31, 31);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 13px 2px rgb(31, 31, 31);
+    transform: scale(0.1);
+  }
+  .name {
+    font-size: x-large;
+    padding-bottom: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    text-decoration: none;
+  }
+}

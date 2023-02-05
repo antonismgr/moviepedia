@@ -16,14 +16,12 @@ const MovieDetails = ({ movie, addToMyList, myList }) => {
         <div className={styles.details_2}>
           <div className={styles.moviehead}>
             <h1>{movie.Title}</h1>
-
-            <div className={styles.rating}>
-              {movie.imdbRating}
-
-              <img src={star} width="30px" />
-            </div>
           </div>
           <h2>{movie.Year}</h2>
+          <div className={styles.rating}>
+            <span className={styles.label}>Rating : {movie.imdbRating}</span>
+            <img src={star} width="30px" />
+          </div>
           <h3>
             <span className={styles.label}>Director</span> : {movie.Director}
           </h3>

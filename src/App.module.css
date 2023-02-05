@@ -1,4 +1,9 @@
-.main {
+@font-face {
+  font-family: "Roboto-Bold";
+  src: local("Roboto-Bold"), url("./fonts/Roboto-Bold.ttf") format("truetype");
+}
+
+main {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -23,4 +28,25 @@
   padding: 20px;
   background-color: gray;
   align-items: center;
+}
+
+.notfound {
+  display: flex;
+  justify-content: center;
+  font-family: "Roboto-Bold";
+  color: white;
+  margin-top: 500px;
+  font-size: xx-large;
+}
+
+@media only screen and (max-width: 600px) {
+  .notfound {
+    display: flex;
+    justify-content: center;
+    font-family: "Roboto-Bold";
+    color: white;
+    margin-top: 250px;
+
+    font-size: large;
+  }
 }
